@@ -3,7 +3,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import {
     GestureHandlerRootView,
     Gesture,
-    GestureDectector
+    GestureDetector
 } from 'react-native-gesture-handler';
 import Animated, {
     useSharedValue,
@@ -18,7 +18,7 @@ export default function App() {
     const positionX = useSharedValue(0);
 
     const panGesture = Gesture.Pan()
-        .OnUpdate((e) => {
+        .onUpdate((e) => {
             if (onLeft.value) {
                 positionX.value = e.translationX;
             } else {
@@ -41,9 +41,9 @@ export default function App() {
 
     return (
         <GestureHandlerRootView style={styles.container}>
-            <GestureDectector gesture={panGesture}>
+            <GestureDetector gesture={panGesture}>
                 <Animated.View style={[styles.box], animatedStyle } />
-            </GestureDectector>
+            </GestureDetector>
           <Text>Open up App.js to start working on your app!</Text>
           <StatusBar style="auto" />
         </GestureHandlerRootView>
